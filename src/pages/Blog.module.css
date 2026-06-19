@@ -1,0 +1,78 @@
+.page {
+  padding-top: calc(var(--nav-h) + 56px);
+  padding-bottom: 96px;
+  min-height: 100vh;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text2);
+  margin-top: 8px;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.list { display: flex; flex-direction: column; gap: 0; }
+
+.postRow {
+  display: grid;
+  grid-template-columns: 120px 1fr 28px;
+  gap: 20px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 0.5px solid var(--border);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.postRow:first-child { border-top: 0.5px solid var(--border); }
+
+.postRow:hover .postTitle { color: var(--accent-light); }
+.postRow:hover .arrow { color: var(--accent-light); transform: translateX(3px); }
+
+.postMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 3px;
+}
+
+.postDate, .postRead {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+
+.postBody { flex: 1; }
+
+.postTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+  transition: color var(--transition);
+}
+
+.postSummary {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.postTags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.arrow {
+  font-size: 16px;
+  color: var(--text3);
+  padding-top: 4px;
+  transition: all var(--transition);
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .postRow { grid-template-columns: 1fr; gap: 8px; }
+  .postMeta { flex-direction: row; gap: 10px; }
+  .arrow { display: none; }
+}

@@ -1,0 +1,376 @@
+.page {
+  padding-top: calc(var(--nav-h) + 56px);
+  padding-bottom: 96px;
+  min-height: 100vh;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 72px;
+  padding-bottom: 64px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.avatarWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+}
+
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  border: 2px solid var(--accent-border);
+  object-fit: cover;
+  object-position: center top;
+}
+
+.avatarMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.available { color: #34D399; }
+
+.availDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.introLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.introLinks a {
+  width: 100%;
+  justify-content: center;
+}
+
+.introText {}
+
+.name {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.role {
+  font-size: 14px;
+  color: var(--accent-light);
+  font-family: var(--font-mono);
+  margin-bottom: 24px;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bio p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.85;
+}
+
+.section {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.section:last-child { border-bottom: none; margin-bottom: 0; }
+
+.section > h2 { margin-bottom: 28px; margin-top: 8px; }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; }
+
+.tlItem {
+  display: flex;
+  gap: 20px;
+}
+
+.tlLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.tlDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent-border);
+}
+
+.tlLine {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+  margin: 6px 0;
+  min-height: 24px;
+}
+
+.tlContent {
+  padding-bottom: 36px;
+  flex: 1;
+}
+
+.tlHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.tlRole {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tlPeriod {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.tlCompany {
+  font-size: 13px;
+  color: var(--accent-light);
+  font-family: var(--font-mono);
+  margin-bottom: 8px;
+}
+
+.tlDesc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+
+.tlTech { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Education */
+.eduGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.eduCard {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.eduDegree {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.eduInst {
+  font-size: 13px;
+  color: var(--accent-light);
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+
+.eduPeriod {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+
+/* Skills */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.skillGroup {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.skillGroupLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  margin-bottom: 14px;
+}
+
+.skillRow { margin-bottom: 12px; }
+.skillRow:last-child { margin-bottom: 0; }
+
+.skillNameWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.skillName { font-size: 12px; color: var(--text2); }
+
+.skillPct {
+  font-size: 10px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+
+.skillBar {
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Certifications */
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.certCard {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.certName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.certIssuer {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+  .intro { grid-template-columns: 1fr; }
+  .avatarWrap { position: static; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; }
+  .introLinks { flex-direction: row; width: auto; }
+  .introLinks a { width: auto; }
+  .skillsGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .skillsGrid { grid-template-columns: 1fr; }
+  .tlHeader { flex-direction: column; gap: 2px; }
+}
+
+/* Tech icons grid */
+.techIconsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.techCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+
+.techCard:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+.techSvg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.techFallback {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+
+.techName {
+  font-size: 10px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  text-align: center;
+  line-height: 1.3;
+  transition: color var(--transition);
+}
+
+.techCard:hover .techName {
+  color: var(--accent-light);
+}

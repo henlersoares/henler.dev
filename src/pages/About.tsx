@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MapPin, Mail, Github, Linkedin } from 'lucide-react'
+import { MapPin, Github, Linkedin } from 'lucide-react'
 import { profile, experiences, skillGroups, education } from '../data'
 import styles from './About.module.css'
 

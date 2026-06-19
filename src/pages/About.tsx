@@ -49,9 +49,14 @@ export default function About() {
               )}
             </div>
             <div className={styles.introLinks}>
-              <a href={`mailto:${profile.email}`} className="btn btn-primary"><Mail size={14} /> E-mail</a>
-              <a href={profile.github} target="_blank" rel="noreferrer" className="btn btn-ghost"><Github size={14} /> GitHub</a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="btn btn-ghost"><Linkedin size={14} /> LinkedIn</a>
+              <a href={profile.github} target="_blank" rel="noreferrer"
+                className="btn" style={{ background: '#24292e', color: '#fff', width: '100%', justifyContent: 'center' }}>
+                <Github size={14} /> GitHub
+              </a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer"
+                className="btn" style={{ background: '#0A66C2', color: '#fff', width: '100%', justifyContent: 'center' }}>
+                <Linkedin size={14} /> LinkedIn
+              </a>
             </div>
           </div>
 

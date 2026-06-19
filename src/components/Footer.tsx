@@ -1,19 +1,9 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { Github, Linkedin } from 'lucide-react'
 import { profile } from '../data'
 import styles from './Footer.module.css'
 
 export default function Footer() {
   const year = new Date().getFullYear()
-  const navigate = useNavigate()
-
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    navigate('/')
-    setTimeout(() => {
-      document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
-  }
 
   return (
     <footer className={styles.footer}>

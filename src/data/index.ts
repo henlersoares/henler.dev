@@ -99,9 +99,9 @@ export const projects: Project[] = [
       '/projects/smartplanix/10.png',
     ],
     highlights: [
-      'Publicada no npm, 200+ downloads',
-      'Setup completo de VPS em menos de 5 minutos',
-      'Suporte a múltiplos ambientes (staging, production)',
+      'Visualização de compromissos em modo diário, semanal e mensal',
+      'Alertas de compromissos próximos em tempo real',
+      'Aba de tarefas integrada funcionando como To-Do List',
     ],
   },
 ]

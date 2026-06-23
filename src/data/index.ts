@@ -24,6 +24,7 @@ export interface Project {
   links: { label: string; url: string }[]
   highlights: string[]
   image?: string
+  gallery?: string[]
 }
 
 export const projects: Project[] = [
@@ -58,6 +59,14 @@ export const projects: Project[] = [
       { label: 'Demo', url: 'https://premium-barber-ten.vercel.app' },
       { label: 'GitHub', url: 'https://github.com/henlersoares/premium-barber' }, // ajusta a URL
     ],
+    image: '/projects/premium-barber/01.png',
+    gallery: [
+      '/projects/premium-barber/01.png',
+      '/projects/premium-barber/02.png',
+      '/projects/premium-barber/03.png',
+      '/projects/premium-barber/04.png',
+      '/projects/premium-barber/05.png',
+    ],
     highlights: [
       'Contato direto via WhatsApp integrado ao botão principal',
       'Design limpo e focado em conversão',
@@ -75,6 +84,19 @@ export const projects: Project[] = [
     tech: ['Typescript', 'Next.js', 'tailwind-css', 'GitHub Actions'],
     links: [
       { label: 'GitHub', url: 'https://github.com/henlersoares/smartplanix' },
+    ],
+    image: '/projects/smartplanix/02.png',
+    gallery: [
+      '/projects/smartplanix/01.png',
+      '/projects/smartplanix/02.png',
+      '/projects/smartplanix/03.png',
+      '/projects/smartplanix/04.png',
+      '/projects/smartplanix/05.png',
+      '/projects/smartplanix/06.png',
+      '/projects/smartplanix/07.png',
+      '/projects/smartplanix/08.png',
+      '/projects/smartplanix/09.png',
+      '/projects/smartplanix/10.png',
     ],
     highlights: [
       'Publicada no npm, 200+ downloads',

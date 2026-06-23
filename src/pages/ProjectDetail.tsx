@@ -1,14 +1,21 @@
+import { useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Github, CheckCircle } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, ArrowUpRight, Github, CheckCircle, X, ChevronLeft, ChevronRight, ImageOff } from 'lucide-react'
 import { projects } from '../data'
 import styles from './ProjectDetail.module.css'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
   const project = projects.find(p => p.slug === slug)
+  const [lightbox, setLightbox] = useState<number | null>(null)
 
   if (!project) return <Navigate to="/projects" replace />
+
+  const gallery = project.gallery ?? []
+
+  const prev = () => setLightbox(i => (i !== null && i > 0 ? i - 1 : gallery.length - 1))
+  const next = () => setLightbox(i => (i !== null && i < gallery.length - 1 ? i + 1 : 0))
 
   return (
     <main className={styles.page}>
@@ -83,21 +90,43 @@ export default function ProjectDetail() {
             </aside>
           </div>
 
+          {/* ── GALERIA ── */}
+          <div className={styles.gallerySection}>
+            <h2 className={styles.blockTitle}>Galeria</h2>
+            {gallery.length > 0 ? (
+              <div className={styles.gallery}>
+                {gallery.map((img, i) => (
+                  <div key={i} className={styles.galleryItem} onClick={() => setLightbox(i)}>
+                    <img src={img} alt={`${project.title} screenshot ${i + 1}`} className={styles.galleryImg} />
+                    <div className={styles.galleryOverlay}>
+                      <ArrowUpRight size={20} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className={styles.noImages}>
+                <ImageOff size={28} className={styles.noImagesIcon} />
+                <p>Imagens do projeto em breve</p>
+              </div>
+            )}
+          </div>
+
           <div className={styles.nav}>
             {(() => {
               const idx = projects.findIndex(p => p.slug === slug)
-              const prev = projects[idx - 1]
-              const next = projects[idx + 1]
+              const prevP = projects[idx - 1]
+              const nextP = projects[idx + 1]
               return (
                 <>
-                  {prev ? (
-                    <Link to={`/projects/${prev.slug}`} className={styles.navLink}>
-                      <ArrowLeft size={14} /> {prev.title}
+                  {prevP ? (
+                    <Link to={`/projects/${prevP.slug}`} className={styles.navLink}>
+                      <ArrowLeft size={14} /> {prevP.title}
                     </Link>
                   ) : <span />}
-                  {next ? (
-                    <Link to={`/projects/${next.slug}`} className={`${styles.navLink} ${styles.navLinkRight}`}>
-                      {next.title} <ArrowLeft size={14} style={{ transform: 'rotate(180deg)' }} />
+                  {nextP ? (
+                    <Link to={`/projects/${nextP.slug}`} className={`${styles.navLink} ${styles.navLinkRight}`}>
+                      {nextP.title} <ArrowLeft size={14} style={{ transform: 'rotate(180deg)' }} />
                     </Link>
                   ) : <span />}
                 </>
@@ -106,6 +135,34 @@ export default function ProjectDetail() {
           </div>
         </motion.div>
       </div>
+
+      {/* ── LIGHTBOX ── */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            className={styles.lightbox}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightbox(null)}
+          >
+            <button className={styles.lbClose} onClick={() => setLightbox(null)}><X size={20} /></button>
+            <button className={styles.lbPrev} onClick={e => { e.stopPropagation(); prev() }}><ChevronLeft size={24} /></button>
+            <motion.img
+              key={lightbox}
+              src={gallery[lightbox]}
+              alt={`${project.title} ${lightbox + 1}`}
+              className={styles.lbImg}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={e => e.stopPropagation()}
+            />
+            <button className={styles.lbNext} onClick={e => { e.stopPropagation(); next() }}><ChevronRight size={24} /></button>
+            <span className={styles.lbCounter}>{lightbox + 1} / {gallery.length}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
